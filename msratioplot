@@ -1,0 +1,19 @@
+import matplotlib
+matplotlib.use('Agg')
+import pylab as plt
+import sys
+import numpy as np
+import caesar
+import yt
+import median as pm
+
+infile=np.array([78,62,50])
+logratio=[]
+logms=[]
+
+for j in range(3):
+  obj = caesar.load('/home/rad/data/m100n1024/s50/Groups/m100n1024_0'+str(infile[j])+'.hdf5',LoadHalo=False)
+  ms = np.asarray([i.masses['stellar'] for i in obj.galaxies])
+  sfr = np.asarray([i.sfr for i in obj.galaxies])
+  logms.append(np.log10(ms+1.e-20))
+  logratio.append(np.log10(sfr/ms+1.e-20))import matplotlib
